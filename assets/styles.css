@@ -1,0 +1,208 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+header {
+    padding: 1.5em;
+    background-color: rgba(0, 0, 0, 0.801);
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+header nav a:hover {
+    color: rgb(248, 169, 22);
+    transition-duration: 300ms;
+}
+
+header nav div:last-child {
+    display: flex;
+    gap: 1em;
+}
+
+main {
+    background-color: rgb(248, 169, 22);
+}
+
+main section:first-child {
+    margin: 0;
+    padding: 3em 0 3em 0;
+}
+
+main section:first-child div.container {
+    margin: 0 3em 3em 3em;
+    padding: 1em;
+    border: 2px solid rgba(0, 0, 0, 0.801);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.801);
+    border-radius: 5px;
+    background-color: #f6f6f6;
+}
+
+main section h1 {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 800;
+}
+
+main section p {
+    text-align: center;
+    line-height: 2;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+main section:first-child form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+main section:first-child form input {
+    margin: 1em;
+    padding: 1em;
+    width: 80%;
+    border: 2px solid rgba(0, 0, 0, 0.801);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.801);
+    border-radius: 2px;
+    font-size: 16px;
+}
+
+main section:first-child form input:hover {
+    border-color: rgb(248, 169, 22);
+    transition-duration: 300ms;
+}
+
+main section:first-child form select {
+    margin: 1em;
+    padding: 1em;
+    width: 80%;
+    border: 2px solid rgba(0, 0, 0, 0.801);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.801);
+    border-radius: 2px;
+    font-size: 16px;
+}
+
+main section:first-child form select:hover {
+    border-color: rgb(248, 169, 22);
+    transition-duration: 300ms;
+}
+
+#ingredient {
+    height: 100px;
+}
+
+#instructions {
+    height: 100px;
+}
+
+main section:first-child form label {
+    font-weight: 500;
+}
+
+main section:first-child form button {
+    margin: auto;
+    padding: 1em;
+    box-sizing: border-box;
+    width: 75%;
+    border: 2px solid rgba(0, 0, 0, 0.801);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.801);
+    border-radius: 2px;
+    background-color: white;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+main section:first-child form button:hover {
+    text-transform: uppercase;
+    background-color: rgb(248, 169, 22);
+    transform: scale(1.1);
+    cursor: pointer;
+    transition-duration: 300ms;
+}
+
+main section:last-child h2 {
+    text-align: center;
+}
+
+main section:last-child article {
+    margin: 1em;
+    padding: 1em;
+    border: 2px solid rgba(0, 0, 0, 0.801);
+    border-radius: 2px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.801);
+    background-color: #f6f6f6;
+}
+
+main section:last-child article div.articletop {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.801);
+}
+
+main section:last-child article div.articletop h3 {
+    line-height: 2;
+    text-decoration: underline;
+}
+
+main section:last-child article div.articletop span {
+    background-color: rgb(248, 169, 22);
+    padding: 3px 6px;
+    border-radius: 10px;
+}
+
+main section:last-child article div.articletop div.button {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+main section:last-child article div.articletop button {
+    width: 60px;
+    height: 40px;
+    background-color: #f6f6f6;
+    border: 2px solid rgba(0, 0, 0, 0.801);
+    border-radius: 2px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.801);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+main section:last-child article div.articletop button:hover{
+    border:3px solid rgb(248, 169, 22);
+    cursor: pointer;
+    transition-duration: 300ms;
+}
+
+@media (min-width: 462px) {
+
+    main section:first-child form div {
+        display: flex;
+        flex-direction: row;
+    }
+
+    main section:first-child form input {
+        width: 50%;
+    }
+
+    main section:first-child form select {
+        width: 50%;
+    }
+
+    main section:first-child form label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
