@@ -154,7 +154,7 @@ main section:last-child h2 {
 
 main section:last-child article {
     margin: 1em;
-    padding: 2em;
+    padding: 0 2em 2em 2em;
     border: 2px solid rgba(0, 0, 0, 0.801);
     border-radius: 2px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.801);
@@ -182,7 +182,7 @@ main section:last-child article div.articletop span {
 }
 
 main section:last-child article div.articletop div.button {
-   margin-top: 1em;
+    margin-top: 1em;
     display: flex;
     align-items: center;
     gap: 1em;
@@ -234,7 +234,7 @@ main section:last-child article div.articletop button:hover {
     }
 
     main section:last-child article div.articletop {
-    flex-direction: row;
-    justify-content: space-between;
+        flex-direction: row;
+        justify-content: space-between;
     }
 }

@@ -11,12 +11,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap"
         rel="stylesheet">
     <title>Your Recipe App</title>
-
 </head>
 
 <body>
-    <script src="./assets/main.js"></script>
-
     <header>
         <nav>
             <div>
@@ -24,7 +21,7 @@
             </div>
             <div>
                 <a href="#">Create</a>
-                <a href="#recipes">Recipes</a>
+                <a href="#">Recipes</a>
             </div>
         </nav>
     </header>
@@ -33,14 +30,14 @@
             <div class="container">
                 <h1>Your Recipe App</h1>
                 <p>Keep all your favorites recipes easily</p>
-                <form action="">
+                <form id="form" action="">
                     <div>
                         <label for="name">Recipe's Name :</label>
-                        <input id="name" type="text" placeholder="Enter the recipe's name here">
+                        <input id="name" name="name" type="text" placeholder="Enter the recipe's name here">
                     </div>
                     <div>
                         <label for="categorie">Categorie :</label>
-                        <select name="foodtype" id="categorie">
+                        <select name="categorie" id="categorie">
                             <option value="breakfast">Breakfast</option>
                             <option value="soup">Soup</option>
                             <option value="entry">Entry</option>
@@ -60,83 +57,16 @@
                         <textarea name="instructions" id="instructions" rows="7"
                             placeholder="Enter the instructions step by step here"></textarea>
                     </div>
-                    <button>Create Recipe</button>
+                    <button type="submit" id="create">Create Recipe</button>
                 </form>
             </div>
         </section>
         <section id="recipes">
             <h2>Look through your recipes here</h2>
-            <article>
-                <div class="articletop">
-                    <div class="recipe">
-                        <h3>Recipe's name</h3>
-                        <span>Categorie</span>
-                    </div>
-                    <div class="button">
-                        <button>Edit</button>
-                        <button>Delete</button>
-                    </div>
-                </div>
-                <div class="articlebottom">
-                    <ul>
-                        <h4>Ingredients</h4>
-                        <li></li>
-                    </ul>
-                    <ol>
-                        <h4>Step By Step</h4>
-                        <li></li>
-                    </ol>
-                </div>
-            </article>
-            <article>
-                <div class="articletop">
-                    <div class="recipe">
-                        <h3>Recipe's name</h3>
-                        <span>Categorie</span>
-                    </div>
-                    <div class="button">
-                        <button>Edit</button>
-                        <button>Delete</button>
-                    </div>
-                </div>
-                <div class="articlebottom">
-                    <ul>
-                        <h4>Ingredients</h4>
-                        <li></li>
-                    </ul>
-                    <ol>
-                        <h4>Step By Step</h4>
-                        <li></li>
-                    </ol>
-                </div>
-            </article>
-            <article>
-                <div class="articletop">
-                    <div class="recipe">
-                        <h3>Recipe's name</h3>
-                        <span>Categorie</span>
-                    </div>
-                    <div class="button">
-                        <button>Edit</button>
-                        <button>Delete</button>
-                    </div>
-                </div>
-                <div class="articlebottom">
-                    <ul>
-                        <h4>Ingredients</h4>
-                        <li></li>
-                    </ul>
-                    <ol>
-                        <h4>Step By Step</h4>
-                        <li></li>
-                    </ol>
-                </div>
-            </article>
         </section>
     </main>
-    <footer>
 
-    </footer>
+    <script src="./assets/main.js"></script>
 </body>
 
 </html>
