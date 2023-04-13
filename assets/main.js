@@ -2,47 +2,50 @@
 const createButton = document.getElementById('create')
 createButton.addEventListener('click', create)
 
-const recipes = []
+const updateButton = document.getElementById('update')
+updateButton.addEventListener('click', updateRecipe)
+
+let recipes = []
 
 function create(event) {
     event.preventDefault()
     const recipe = readForm()
+    recipes.push(recipe)
     createArticle(recipe)
     clearForm()
     saveDataLS()
 }
 
+const nameInput = document.getElementById('name')
+const categorieInput = document.getElementById('categorie')
+const ingredientsInput = document.getElementById('ingredients')
+const instructionsInput = document.getElementById('instructions')
+const recipesList = document.getElementById('recipes')
+
 function readForm() {
-    const nameInput = document.getElementById('name')
-    const categorieInput = document.getElementById('categorie')
-    const ingredientsInput = document.getElementById('ingredients')
-    const instructionsInput = document.getElementById('instructions')
 
     const recipe = {
         name: nameInput.value,
         categorie: categorieInput.value,
         ingredients: ingredientsInput.value,
-        instructions: instructionsInput.value
+        instructions: instructionsInput.value,
+        id: Date.now()
     }
-
-    recipes.push(recipe)
     return recipe
-
 }
 
 function createArticle(recipe) {
 
-    const recipesList = document.getElementById('recipes')
     recipesList.innerHTML += `
-        <article id="fullArticle">
+        <article id="fullArticle${recipe.id}">
             <div class="articletop">
                 <div class="recipe">
                     <h3>${recipe.name}</h3>
                     <span>${recipe.categorie}</span>
                 </div>
                 <div class="button">
-                    <button id="edit">Edit</button>
-                    <button id="delete">Delete</button>
+                    <button onclick="editArticle(${recipe.id})">Edit</button>
+                    <button onclick="deleteRecipe(${recipe.id})">Delete</button>
                 </div>
             </div>
             <div class="articlebottom">
@@ -56,8 +59,7 @@ function createArticle(recipe) {
                 </ol>
             </div>
         </article> 
-        `
-
+    `
 }
 
 function clearForm() {
@@ -70,31 +72,46 @@ function saveDataLS() {
 }
 
 function readFromLS() {
-    const recipes = JSON.parse(localStorage.getItem('recipes'))
-    recipes.forEach((el) => createArticle(el))
+    const recipesLS = JSON.parse(localStorage.getItem('recipes'))
+    if (recipesLS) {
+        recipes = recipesLS
+        recipes.forEach((el) => createArticle(el))
+    } else {
+        recipes = []
+    }
 }
 
 readFromLS()
 
-const editButton = document.getElementById('edit')
-editButton.addEventListener('click', editRecipe)
-
-function editRecipe() {
-    const recipe = document.getElementById('fullArticle')
-    
+function deleteRecipe(id) {
+    const index = recipes.findIndex((recipe) => recipe.id === id)
+    recipes.splice(index, 1)
+    saveDataLS()
+    readFromLS()
+    recipesList.innerHTML = ``
+    recipes.forEach((el) => createArticle(el))
 }
 
-const deleteButton = document.getElementById('delete')
-deleteButton.addEventListener('click', deleteRecipe)
+function editArticle(id) {
+    createButton.classList.add('hide')
+    updateButton.classList.remove('hide')
+    const index = recipes.findIndex((recipe) => recipe.id === id)
+    const recipe = recipes[index]
 
-function deleteRecipe() {
-    const element = document.getElementById('fullArticle')
- 
-    deleteFromLS(element)
-    element.remove()
+    nameInput.value = recipe.name
+    categorieInput.value = recipe.categorie
+    ingredientsInput.value = recipe.ingredients
+    instructionsInput.value = recipe.instructions
 
 }
 
-function deleteFromLS() {
-    localStorage.removeItem('this')
+function updateRecipe() {
+    const recipe = readForm()
+    const index = recipes.findIndex((recipe) => recipe.id === recipe.id)
+    recipes[index] = recipe
+    clearForm()
+    saveDataLS()
+    readFromLS()
+    recipes.forEach((el) => createArticle(el))
+
 }

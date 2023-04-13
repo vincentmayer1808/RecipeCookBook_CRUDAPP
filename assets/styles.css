@@ -143,6 +143,10 @@ main section:first-child form button:hover {
     cursor: pointer;
     transition-duration: 300ms;
 }
+.hide {
+    display: none;
+}
+
 
 main section:last-child {
     padding: 0 2em 3em 2em;
