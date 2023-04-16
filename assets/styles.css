@@ -143,6 +143,7 @@ main section:first-child form button:hover {
     cursor: pointer;
     transition-duration: 300ms;
 }
+
 .hide {
     display: none;
 }
@@ -207,6 +208,30 @@ main section:last-child article div.articletop button:hover {
     border: 3px solid rgb(248, 169, 22);
     cursor: pointer;
     transition-duration: 300ms;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5em 3em;
+    background-color: rgba(0, 0, 0, 0.801);
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+footer a:hover {
+    color: rgb(248, 169, 22);
+    transition-duration: 300ms;
+}
+
+footer div:last-child {
+    display: flex;
+    gap: 1em;
 }
 
 @media (min-width: 462px) {
