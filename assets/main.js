@@ -25,7 +25,7 @@ const recipesList = document.getElementById('recipes')
 function readForm() {
 
     let id = Date.now()
-    if(idEditing !== null){
+    if (idEditing !== null) {
         id = idEditing
     }
 
@@ -56,15 +56,24 @@ function createArticle(recipe) {
             <div class="articlebottom">
                 <ul>
                     <h4>Ingredients</h4>
-                    <li>${recipe.ingredients}</li>
+                    ${toList(recipe.ingredients)}
                 </ul>
                 <ol>
                     <h4>Step By Step</h4>
-                    <li>${recipe.instructions}</li>
+                    ${toList(recipe.instructions)}
                 </ol>
             </div>
         </article> 
     `
+}
+
+function toList(text) {
+    let lines = text.split('\n')
+    let html = lines
+        // .filter(line => line.trim() !== '')
+        .map(line => `<li>${line}</li>`)
+        .join('')
+    return html
 }
 
 function clearForm() {
