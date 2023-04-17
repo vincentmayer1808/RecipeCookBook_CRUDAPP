@@ -1,4 +1,3 @@
-
 const createButton = document.getElementById('create')
 createButton.addEventListener('click', create)
 
@@ -6,6 +5,7 @@ const updateButton = document.getElementById('update')
 updateButton.addEventListener('click', updateRecipe)
 
 let recipes = []
+let idEditing = null
 
 function create(event) {
     event.preventDefault()
@@ -24,12 +24,17 @@ const recipesList = document.getElementById('recipes')
 
 function readForm() {
 
+    let id = Date.now()
+    if(idEditing !== null){
+        id = idEditing
+    }
+
     const recipe = {
         name: nameInput.value,
         categorie: categorieInput.value,
         ingredients: ingredientsInput.value,
         instructions: instructionsInput.value,
-        id: Date.now()
+        id
     }
     return recipe
 }
@@ -44,7 +49,7 @@ function createArticle(recipe) {
                     <span>${recipe.categorie}</span>
                 </div>
                 <div class="button">
-                    <button onclick="editArticle(${recipe.id})">Edit</button>
+                    <a href="#createrecipe"><button onclick="editArticle(${recipe.id})">Edit</button></a>
                     <button onclick="deleteRecipe(${recipe.id})">Delete</button>
                 </div>
             </div>
@@ -81,10 +86,8 @@ function readFromLS() {
     }
 }
 
-readFromLS()
-
 function deleteRecipe(id) {
-    const index = recipes.findIndex((recipe) => recipe.id === id)
+    const index = recipes.findIndex((recipe) => recipe.id == id)
     recipes.splice(index, 1)
     saveDataLS()
     readFromLS()
@@ -95,7 +98,7 @@ function deleteRecipe(id) {
 function editArticle(id) {
     createButton.classList.add('hide')
     updateButton.classList.remove('hide')
-    const index = recipes.findIndex((recipe) => recipe.id === id)
+    const index = recipes.findIndex((recipe) => recipe.id == id)
     const recipe = recipes[index]
 
     nameInput.value = recipe.name
@@ -103,15 +106,23 @@ function editArticle(id) {
     ingredientsInput.value = recipe.ingredients
     instructionsInput.value = recipe.instructions
 
+    idEditing = id
 }
 
-function updateRecipe() {
-    const recipe = readForm()
-    const index = recipes.findIndex((recipe) => recipe.id === recipe.id)
-    recipes[index] = recipe
-    clearForm()
+function updateRecipe(e) {
+    e.preventDefault()
+    const recette = readForm()
+    const index = recipes.findIndex((receta) => receta.id == recette.id)
+    recipes[index] = recette
     saveDataLS()
-    readFromLS()
-    recipes.forEach((el) => createArticle(el))
+    clearForm()
 
+    createButton.classList.remove('hide')
+    updateButton.classList.add('hide')
+    idEditing = null
+
+    recipesList.innerHTML = ``
+    readFromLS()
 }
+
+readFromLS()
