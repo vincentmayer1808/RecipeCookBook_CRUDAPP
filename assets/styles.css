@@ -41,7 +41,7 @@ main section:first-child {
 }
 
 main section:first-child div.container {
-    margin: 0 3em 3em 3em;
+    margin: 0 3em;
     padding: 1em;
     border: 2px solid rgba(0, 0, 0, 0.801);
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.801);
@@ -92,6 +92,7 @@ main section:first-child form input:hover {
 main section:first-child form textarea {
     margin-top: 1em;
     padding: 1em;
+    resize: none;
     width: 80%;
     border: 2px solid rgba(0, 0, 0, 0.801);
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.801);
