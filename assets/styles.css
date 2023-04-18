@@ -36,7 +36,6 @@ main {
 }
 
 main section:first-child {
-    margin: 0;
     padding: 3em 0;
 }
 
@@ -55,7 +54,7 @@ main section h1 {
     font-weight: 800;
 }
 
-main section p {
+main section:first-child p {
     text-align: center;
     line-height: 2;
     font-size: 20px;
@@ -127,7 +126,6 @@ main section:first-child form label {
 main section:first-child form button {
     margin: auto;
     padding: 1em;
-    box-sizing: border-box;
     width: 75%;
     border: 2px solid rgba(0, 0, 0, 0.801);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.801);

@@ -14,6 +14,7 @@ function create(event) {
     createArticle(recipe)
     clearForm()
     saveDataLS()
+    location.href=`#fullArticle${recipe.id}`
 }
 
 const nameInput = document.getElementById('name')
@@ -70,7 +71,7 @@ function createArticle(recipe) {
 function toList(text) {
     let lines = text.split('\n')
     let html = lines
-        // .filter(line => line.trim() !== '')
+        .filter(line => line.trim() !== '')
         .map(line => `<li>${line}</li>`)
         .join('')
     return html
@@ -132,6 +133,7 @@ function updateRecipe(e) {
 
     recipesList.innerHTML = ``
     readFromLS()
+    location.href=`#fullArticle${recette.id}`
 }
 
 readFromLS()
