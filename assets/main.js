@@ -14,7 +14,7 @@ function create(event) {
     createArticle(recipe)
     clearForm()
     saveDataLS()
-    location.href=`#fullArticle${recipe.id}`
+    location.href = `#fullArticle${recipe.id}`
 }
 
 const nameInput = document.getElementById('name')
@@ -24,12 +24,10 @@ const instructionsInput = document.getElementById('instructions')
 const recipesList = document.getElementById('recipes')
 
 function readForm() {
-
     let id = Date.now()
     if (idEditing !== null) {
         id = idEditing
     }
-
     const recipe = {
         name: nameInput.value,
         categorie: categorieInput.value,
@@ -41,7 +39,6 @@ function readForm() {
 }
 
 function createArticle(recipe) {
-
     recipesList.innerHTML += `
         <article id="fullArticle${recipe.id}">
             <div class="articletop">
@@ -97,12 +94,30 @@ function readFromLS() {
 }
 
 function deleteRecipe(id) {
-    const index = recipes.findIndex((recipe) => recipe.id == id)
-    recipes.splice(index, 1)
-    saveDataLS()
-    readFromLS()
-    recipesList.innerHTML = ``
-    recipes.forEach((el) => createArticle(el))
+    Swal.fire({
+        title: 'Are you sure you want to delete this recipe?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: 'rgb(248, 169, 22)',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const index = recipes.findIndex((recipe) => recipe.id == id)
+            recipes.splice(index, 1)
+            saveDataLS()
+            readFromLS()
+            recipesList.innerHTML = ``
+            recipes.forEach((el) => createArticle(el))
+            Swal.fire(
+                'Deleted!',
+                'Your recipe has been deleted.',
+                'success'
+            )
+        }
+    })
+
 }
 
 function editArticle(id) {
@@ -133,7 +148,7 @@ function updateRecipe(e) {
 
     recipesList.innerHTML = ``
     readFromLS()
-    location.href=`#fullArticle${recette.id}`
+    location.href = `#fullArticle${recette.id}`
 }
 
 readFromLS()
